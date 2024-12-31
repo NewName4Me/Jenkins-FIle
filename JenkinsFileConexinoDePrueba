@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    
+    environment{
+        MI_VARIABLE_DE_ENTORNO = "guapeton"
+    }
+    
+    stages {
+        stage("Saludo") {
+            steps {
+                echo "Hola desde Saludo stage"
+            }
+        }
+        stage("Webon"){
+            steps{
+                echo "Webon paso 1"
+                echo "Webon paso 2"
+            }
+        }
+        stage("Imprimir variable de entorno"){
+            steps{
+                echo "${env.MI_VARIABLE_DE_ENTORNO}"
+                sh 'echo "hola mundo desde sh"'
+            }
+        }
+    }
+}
